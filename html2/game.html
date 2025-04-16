@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Riddle Game</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/fall-autumn-red-season.jpg" />
+
+    <!--Core theme CSS (includes Bootstrap)-->
+     <link href="css/styles.css" rel="stylesheet" />
+ </head>
+ <body>
+     <!-- Responsive navbar-->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="container">
+             <a>Resume</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.html">Resume</a></li>
+                     <li class="nav-item"><a class="nav-link" href="game.html">Game</a></li>
+                     <li class="nav-item"><a class="nav-link" href="Tableau.html">Tableau</a></li>
+
+                    </ul>
+             </div>
+         </div>
+     </nav>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<style>
+        /* This was copied from Chat GPT*/
+        /* Inline styles for the riddle game */
+        .riddle-container {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .riddle-container h2 {
+            color: #131921;
+        }
+
+        .riddle-container button {
+            background-color: #ffa41c;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .riddle-container button:hover {
+            background-color: #febd69;
+        }
+
+        .riddle-container input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .riddle-container p {
+            font-weight: bold;
+        }
+
+        #score {
+            color: #131921;
+            font-size: 18px;
+        }
+    </style>
+
+
+    <!-- Riddle Game Section -->
+    <div class="MainBody">
+        <div class="riddle-container">
+            <h2>Can You Solve This Bird Riddle?</h2>
+            
+            <!-- Score Counter -->
+            <p id="score">Score: 0</p>
+
+            <!-- Riddle Display -->
+            <p id="riddle">Click "New Riddle" to start!</p>
+
+            <!-- Input for User's Answer -->
+            <input type="text" id="answerInput" placeholder="Type your answer here...">
+            
+            <!-- Buttons -->
+            <button onclick="checkAnswer()">Submit Answer</button>
+            <button onclick="newRiddle()">New Riddle</button>
+
+            <!-- Feedback Message -->
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        // Array of bird-related riddles and their answers
+        const riddles = [
+            { question: "I soar high in the sky, with a sharp eye and talons that pry. What am I?", answer: "eagle" },
+            { question: "I am pink and stand on one leg. What am I?", answer: "flamingo" },
+            { question: "I hoot at night and have big round eyes. What am I?", answer: "owl" },
+            { question: "I waddle on ice and can't fly. What am I?", answer: "penguin" },
+            { question: "I build my nest in chimneys and eat insects on the fly. What am I?", answer: "swift" },
+            { question: "I’m a symbol of peace, white as snow. What am I?", answer: "dove" }
+        ];
+
+        let currentRiddle = null; // Current riddle being displayed
+        let score = 0; // Score counter
+
+        // Function to display a new riddle
+        function newRiddle() {
+            const randomIndex = Math.floor(Math.random() * riddles.length);
+            currentRiddle = riddles[randomIndex];
+            
+            document.getElementById("riddle").textContent = currentRiddle.question; // Display riddle
+            
+            document.getElementById("answerInput").value = ""; // Clear input field
+            document.getElementById("resultMessage").textContent = ""; // Clear feedback message
+        }
+
+        // Function to check the user's answer
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answerInput").value.toLowerCase().trim();
+            
+            if (!currentRiddle) {
+                document.getElementById("resultMessage").textContent = "Click 'New Riddle' to start!";
+                return;
+            }
+
+            if (userAnswer === currentRiddle.answer) {
+                score++; // Increase score if correct
+                document.getElementById("score").textContent = `Score: ${score}`; // Update score display
+                
+                document.getElementById("resultMessage").textContent = "Correct! Great job!";
+                document.getElementById("resultMessage").style.color = "#6aaa64"; // Green for correct
+                
+                currentRiddle = null; // Reset the riddle
+                document.getElementById("answerInput").value = ""; // Clear input field
+                newRiddle(); // Automatically load a new riddle
+            } else {
+                document.getElementById("resultMessage").textContent = "Incorrect! Try again.";
+                document.getElementById("resultMessage").style.color = "#ff0000"; // Red for incorrect
+                document.getElementById("answerInput").value = ""; // Clear input field
+                document.getElementById("answerInput").focus(); // Focus input field for retrying
+            }
+        }
+    </script>
+
+    
+
+</html>

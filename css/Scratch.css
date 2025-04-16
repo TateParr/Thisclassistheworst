@@ -1,0 +1,49 @@
+img{
+
+width: 800px;
+
+}
+
+
+.all{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    background-color: beige;
+    margin: 10px;
+    padding: 12px;
+}
+
+.main-body{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(7, 53, 17);
+
+}
+
+h2{
+font-family: Georgia, 'Times New Roman', Times, serif;
+color:brown
+
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    color: rgb(10, 127, 84);
+    background: whitesmoke ;
+    text-decoration: none;
+}
+
+.wink{
+    font-size: 12px;
+    color: rgb(22, 1, 104);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    background-color: beige;
+    margin: 10px;
+    padding: 12px;
+    text-decoration: none;
+    Position: top;
+    top: 10px;
+
+}
